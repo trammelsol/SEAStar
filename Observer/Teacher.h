@@ -1,6 +1,7 @@
 #pragma once
 #include<iostream>
 #include<list>
+#include<set>
 #include "Observer.h"
 using namespace std;
 
@@ -13,28 +14,16 @@ public:
 	virtual string getTName() = 0;
 };
 
-class TeacherA :public Abstractteacher{
+class Teacher :public Abstractteacher{
 private:
 	list<Observer*> listA;
-	string assignmentA;
+	set<string>assignmentA;
 	string name = "A";
 public:
+	Teacher(string name);
 	void addStduent(Observer* abstractstudent) override;
 	void removeStduent(Observer* abstractstudent) override;
 	void punish(string assignmentA ) override;
 	void notify(string name) override;
 	string getTName() ;
-};
-
-class TeacherB :public Abstractteacher{
-private:
-	list<Observer*> listB;
-	string assignmentB;
-	string name = "B";
-public:
-	void addStduent(Observer* abstractstudent) override;
-	void removeStduent(Observer* abstractstudent) override;
-	void punish(string assignmentB ) override;
-	void notify(string name) override;
-	string getTName();
 };

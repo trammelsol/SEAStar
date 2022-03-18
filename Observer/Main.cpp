@@ -2,24 +2,28 @@
 #include"teacher.h"
 
 int main(){
-	std::unique_ptr<Abstractteacher>teacherA(new TeacherA());
-	std::unique_ptr<Abstractteacher>teacherB(new TeacherB());
-	std::unique_ptr<AbstractStudent>studentA(new StudentA("A1"));
-	std::unique_ptr<AbstractStudent>studentB(new StudentB("B1"));
+	std::unique_ptr<Abstractteacher>Teacher_Mao(new Teacher("Mao"));
+	std::unique_ptr<Abstractteacher>Teacher_Niu(new Teacher("Niu"));
+	std::unique_ptr<AbstractStudent>Student_A(new Student("SA1"));
+	std::unique_ptr<AbstractStudent>Student_B(new Student("SB1"));
 	//add teacher on the subscribe list  
-	studentA->addTeacher(teacherA.get());
-	studentA->addTeacher(teacherB.get());
-	studentB->addTeacher(teacherB.get());
+	Student_A->addTeacher(Teacher_Mao.get());
+	Student_A->addTeacher(Teacher_Niu.get());
+	Student_B->addTeacher(Teacher_Niu.get());
 	cout << "----------------------------" << endl;
 	//to push message
-	teacherA->punish("I'm thacherA");
+	Teacher_Mao->punish("I'm Thacher_Mao");
 	cout << "----------------------------" << endl;
-	teacherB->punish("I'm thacherB");
+	Teacher_Mao->punish("Thacher_Mao push the second message");
+	cout << "----------------------------" << endl;
+	Teacher_Niu->punish("I'm Thacher_Niu");
+	cout << "----------------------------" << endl;
+	Teacher_Niu->punish("Thacher_Niu push the second message");
 	cout << "----------------------------" << endl;
 	//to remove teacher the only teacher you can delete is B
-	cout << "Tips:The Next Input is 'B'" << endl;
+	cout << "Tips:The Next Input is 'Niu'" << endl;
 	cout << "----------------------------" << endl;
-	studentB->removeMe();
+	Student_B->removeMe();
 	cout<<"After delete :" << endl;
-	teacherB->punish("I'm thacherB");
+	Teacher_Niu->punish("I'm Thacher_Niu");
 }

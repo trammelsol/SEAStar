@@ -1,15 +1,27 @@
 #include"teacher.h"
 
-void TeacherA::addStduent(Observer* abstractstudent){
+Teacher::Teacher(string name) {
+	this->name = name;
+}
+
+void Teacher::addStduent(Observer* abstractstudent){
 	if (abstractstudent == nullptr){
 		cout << "Add error !" << endl;
 		return;
 	}
-	cout << "By TeacherA Add Successfully . Hi I'm Student :" << abstractstudent->getNumber() << endl;
+	int size = listA.size();
+	for (auto it : listA) {
+		if (it->getNumber() == abstractstudent->getNumber()) {
+			cout << "You have Added the student and no need to add !" << endl;
+			return;
+		}
+		size--;
+	}
 	listA.push_back(abstractstudent);
+	cout << "Add By Teacher Successfully . Hi I'm Student :" << abstractstudent->getNumber() << endl;
 }
 
-void TeacherA::removeStduent(Observer* abstractstudent){
+void Teacher::removeStduent(Observer* abstractstudent){
 	if (abstractstudent == nullptr){
 		cout << "Delete error !" << endl;
 		return;
@@ -18,55 +30,20 @@ void TeacherA::removeStduent(Observer* abstractstudent){
 	cout <<getTName()<<"£ºYou have deleted !" << endl;
 }
 
-void TeacherA::punish(string assignmentA){
-	string name = "TeacherA";
-	this->assignmentA = assignmentA;
-	notify(name);
+void Teacher::punish(string assignmentA){
+	this->assignmentA.insert(assignmentA);
+	notify(getTName());
 }
 
-void TeacherA::notify(string name){
+void Teacher::notify(string name){
 	cout << "There are " << listA.size() << " students in the list" << endl;
 	for (auto it : listA){
-		it->getNotify(assignmentA,name);
+		for (auto it_ = assignmentA.cbegin(); it_ != assignmentA.cend(); it_++) {
+			it->getNotify(*it_, name);
+		}
 	}
 }
 
-void TeacherB::addStduent(Observer* abstractstudent){
-	if (abstractstudent == nullptr){
-		cout << "Add error !" << endl;
-		return;
-	}
-	listB.push_back(abstractstudent);
-	cout << "By TeacherB Add Successfully . Hi I'm Student :" << abstractstudent->getNumber() << endl;
-}
-
-void TeacherB::removeStduent(Observer* abstractstudent){
-	if (abstractstudent == nullptr){
-		cout << "Delete error !" << endl;
-		return;
-	}
-	listB.remove(abstractstudent);
-	cout <<getTName()<<"£ºYou have deleted !" << endl;
-}
-
-void TeacherB::punish(string assignmentB){
-	string name = "TeacherB";
-	this->assignmentB = assignmentB;
-	notify(name);
-}
-
-void TeacherB::notify(string name){
-	cout << "There are " << " " << listB.size() << " students in the list" << endl;
-	for (auto it : listB){
-		it->getNotify(assignmentB,name);
-	}
-}
-
-
-string TeacherA::getTName(){
-	return name;
-}
-
-string TeacherB::getTName(){
+string Teacher::getTName(){
 	return name;
 }
