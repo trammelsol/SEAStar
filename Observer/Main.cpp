@@ -1,34 +1,25 @@
-#include"Student.h"
-#include"Teacher.h"
+#include"students.h"
+#include"teacher.h"
 
-int main()
-{
-    //Create IObserver:Teacher
-    AbstractTeacher* Teacher_Ma = new Teacher();
-    AbstractTeacher* Teacher_Niu = new Teacher();
-    //Create Observer:Student
-    Student* Student1 = new StockStudent("June", Teacher_Niu);
-    Student* Student2 = new StockStudent("Mary", Teacher_Niu);
-    Student* Student3 = new StockStudent("Jack", Teacher_Ma);
-    Student* Student4 = new StockStudent("March", Teacher_Ma);
-    //Publish message
-    Teacher_Niu->attach(Student1);
-    Teacher_Niu->attach(Student2);
-    Teacher_Niu->action = "assign schoolwork";
-    Teacher_Niu->notify();
-    cout << endl;
-    Teacher_Niu->action = "finish class";
-    Teacher_Niu->notify();
-    cout << endl;
-    Teacher_Ma->attach(Student3);
-    Teacher_Ma->attach(Student4);
-    Teacher_Ma->action = "assign schoolwork";
-    Teacher_Ma->notify();
-    cout << endl;
-    Teacher_Ma->detach(Student4);
-    Teacher_Ma->action = "finish class";
-    Teacher_Ma->notify();
-    delete Teacher_Ma, Teacher_Niu;
-    delete Student1, Student2, Student3, Student4;
-    return 0;
+int main(){
+	std::unique_ptr<Abstractteacher>teacherA(new TeacherA());
+	std::unique_ptr<Abstractteacher>teacherB(new TeacherB());
+	std::unique_ptr<AbstractStudent>studentA(new StudentA("A1"));
+	std::unique_ptr<AbstractStudent>studentB(new StudentB("B1"));
+	//add teacher on the subscribe list  
+	studentA->addTeacher(teacherA.get());
+	studentA->addTeacher(teacherB.get());
+	studentB->addTeacher(teacherB.get());
+	cout << "----------------------------" << endl;
+	//to push message
+	teacherA->punish("I'm thacherA");
+	cout << "----------------------------" << endl;
+	teacherB->punish("I'm thacherB");
+	cout << "----------------------------" << endl;
+	//to remove teacher the only teacher you can delete is B
+	cout << "Tips:The Next Input is 'B'" << endl;
+	cout << "----------------------------" << endl;
+	studentB->removeMe();
+	cout<<"After delete :" << endl;
+	teacherB->punish("I'm thacherB");
 }
