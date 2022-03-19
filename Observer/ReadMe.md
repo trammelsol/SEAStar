@@ -4,7 +4,7 @@
 观察者模式通常的叫法叫做订阅-发布模式，类似于报刊杂志的订阅，观察者和被观察者就是读者和邮局的关系，读者先要在邮局订阅想要的报刊，当报刊发行时，邮局会将报刊邮寄到读者家里。  
 观察者（Observer）和被观察者（Listener）也是这种关系，Observer将自己attach到Listener中，当Listener触发时Notify所有Observer.
 在观察者模式中，被观察者维护观察者对象的集合，当被观察者对象变化时，它会通知观察者。观察者模式主要是用于解决对象之间一对多的关系。
-![lt text](https://images2015.cnblogs.com/blog/765168/201608/765168-20160814144941875-41772080.png "Class SketchMap")  
+![lt text](https://gitee.com/trammelsol/seastar/raw/master/Observer/Observer.png "Class SketchMap")  
 
 ####advantage:
 . 开闭原则  
