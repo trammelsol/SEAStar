@@ -6,7 +6,7 @@
 在观察者模式中，被观察者维护观察者对象的集合，当被观察者对象变化时，它会通知观察者。观察者模式主要是用于解决对象之间一对多的关系。
 ![lt text](https://gitee.com/trammelsol/seastar/raw/master/Observer/Observer.png "Class SketchMap")  
 
-####advantage:
+###advantage:  
 . 开闭原则  
 . 依赖倒置原则  
 . 运行时建立对象之间的联系  
