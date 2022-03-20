@@ -4,7 +4,7 @@
 ##简单工厂模式 SimpleFactory Pattern  
 ###简单工厂模式并不是一个真正意义上的设计模式，它更像是一个变成的习惯用法。  
 #![alt SimpleFactory](https://gitee.com/trammelsol/seastar/raw/master/FactoryPattern/SimpleFactory.png "简单工厂模式")  
-#```C++
+```C++
 
 class Transport;
 class Ship : public Transport;
@@ -23,13 +23,13 @@ class SimpleFactory{
         }
 }
 
-#```  
+```  
 
 
 ##工厂方法模式 Factory Method Pattern
 ###工厂方法模式是一种创建型设计模式。其在父类中提供一个创建对象的方法，允许子类决定实例化对象的类型
 #![alt FactoryMethod](https://gitee.com/trammelsol/seastar/raw/master/FactoryPattern/FactoryMethod.png "工厂方法模式")
-#```C++
+```C++
 class Transport {
 public:
 	virtual ~Transport() {};
@@ -72,12 +72,12 @@ class AirLogistics : public Logistics {
 public:
 	Transport* CreateTransport() const override;
 };
-#```
+```
 
 ##抽象工厂模式 Abstract Factory Pattern
 ###抽象工厂模式是一种创建型设计模式它能创建一系列相关的对象， 而无需指定其具体类。
 #![alt AbstractFactory](https://gitee.com/trammelsol/seastar/raw/master/FactoryPattern/AbstractFactory.png "抽象工厂模式")
-#```C++
+```C++
 class Factory {
 public:
 	virtual Chair *CreateChair() const = 0;
@@ -106,7 +106,7 @@ public:
 	CoffeeTable* CreateCoffeeTable() const override;
 };
 
-#```
+```
 
 >家具工厂、物流合并
 >使用场景：
@@ -115,8 +115,23 @@ public:
 >• 选用工厂设计模式，在兼容原有家具工厂方法的同时合并物流功能。
 
 #### 软件架构
-软件架构说明
+```C++
+//to combine class Delievery and class Factory
+#include"ClassDecaler_Furniture.h"
+#include"ClassDecaler_Delievry.h"
 
+class Compose_Class {
+private:
+	Factory* factory;
+	Logistics* delievery;
+public:
+	virtual ~Compose_Class();
+	Compose_Class(int , int );
+	void ClientCode();
+	void ClientCode(int );
+
+};
+```
 
 #### 安装教程
 
@@ -126,8 +141,8 @@ public:
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
+1.  std::unique_ptr<Compose_Class>Demo(new Compose_Class(factory_cho,delievery_cho));// to create an object with ability to create furniture and delievery
+2.  object->ClientCode(product);//to product a set of furniture or specific chair/sofa/coffee_table
 3.  xxxx
 
 #### 参与贡献
