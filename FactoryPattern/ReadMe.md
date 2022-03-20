@@ -142,11 +142,11 @@ public:
 3.  xxxx
 
 #### 使用说明
-
+```C++
 1.  std::unique_ptr<Compose_Class>Demo(new Compose_Class(factory_cho,delievery_cho));// to create an object with ability to create furniture and delievery
 2.  object->ClientCode(product);//to product a set of furniture or specific chair/sofa/coffee_table
 3.  xxxx
-
+```
 #### 参与贡献
 
 1.  Fork 本仓库
