@@ -9,12 +9,7 @@ struct ListNode{
 	int value;//number
 	ListNode* pPre;
 	ListNode* pNext;
-	ListNode(std::string key="null", int value=0) {
-		key = key;
-		value = value;
-		pPre = nullptr;
-		pNext = nullptr;
-	}
+	ListNode(std::string key, int value) : key(key), value(value), pPre(nullptr), pNext(nullptr) {}
 };
 
 class LRUCache{
