@@ -1,16 +1,17 @@
 #pragma once
 #include<iostream>
-#include<map>
+#include <unordered_map>
+#include<string>
 using namespace std;
 
 struct ListNode{
-	std::string m_key;//name
-	int m_value;//number
+	std::string key;//name
+	int value;//number
 	ListNode* pPre;
 	ListNode* pNext;
-	ListNode(std::string key, int value){
-		m_key = key;
-		m_value = value;
+	ListNode(std::string key="null", int value=0) {
+		key = key;
+		value = value;
 		pPre = nullptr;
 		pNext = nullptr;
 	}
@@ -18,10 +19,10 @@ struct ListNode{
 
 class LRUCache{
 private:
-	int m_capacity;    //Cache capacity
+	int capacity;    //Cache capacity
 	ListNode* pHead;   //Head Node
 	ListNode* pTail;   //Tail Node
-	map<std::string , ListNode*>  mp;   //mp use to store data
+	unordered_map<std::string , ListNode*>  mp;   //mp use to store data
 public:
 	LRUCache(int size);
 	~LRUCache();

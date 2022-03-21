@@ -1,13 +1,14 @@
 #include"Cache.h"
+#define _CRT_SECURE_NO_WARNINGS
 
 LRUCache::LRUCache(int size) {
-	m_capacity = size;
+	capacity = size;
 	pHead = nullptr;
 	pTail = nullptr;
 }
 
 LRUCache::~LRUCache(){
-	map<std::string, ListNode*>::iterator it = mp.begin();
+	unordered_map<std::string, ListNode*>::iterator it = mp.begin();
 	for (; it != mp.end();){
 		delete it->second;
 		it->second = nullptr;
@@ -50,16 +51,16 @@ void LRUCache::SetHead(ListNode* pNode) {
 }
 
 void LRUCache::Set(std::string key, int value){
-	map<std::string, ListNode*>::iterator it = mp.find(key);
+	unordered_map<std::string, ListNode*>::iterator it = mp.find(key);
 	if (it != mp.end()){
 		ListNode* Node = it->second;
-		Node->m_value = value;
+		Node->value = value;
 		Remove(Node);
 		SetHead(Node);
 	}else{
 		ListNode* NewNode = new ListNode(key, value);
-		if (int(mp.size()) >= m_capacity){
-			map<std::string, ListNode*>::iterator it = mp.find(pTail->m_key);
+		if (int(mp.size()) >= capacity){
+			unordered_map<std::string, ListNode*>::iterator it = mp.find(pTail->key);
 			Remove(pTail);
 			delete it->second;
 			mp.erase(it);
@@ -67,15 +68,16 @@ void LRUCache::Set(std::string key, int value){
 		SetHead(NewNode);
 		mp[key] = NewNode;
 	}
+	cout<<"#####	Add new item to the Cache	#####" << endl;
 }
 
 int LRUCache::Get(std::string key){
-	map<std::string , ListNode*>::iterator it = mp.find(key);
+	unordered_map<std::string , ListNode*>::iterator it = mp.find(key);
 	if (it != mp.end()){
 		ListNode* Node = it->second;
 		Remove(Node);
 		SetHead(Node);
-		return Node->m_value;
+		return Node->value;
 	}else{
 		return -1;
 	}

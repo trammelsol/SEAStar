@@ -3,9 +3,9 @@
 bool Proxy::CheckAccess() const{
     cout<<"+++++++++++++++++++++++++++++++++++++++" << endl;
     cout << "Enter The Passward :" << endl;
-    int psd_cin;
-    std::cin >> psd_cin;
-    if (psd == psd_cin){
+    int PsdCin;
+    std::cin >> PsdCin;
+    if (psd == PsdCin){
         cout << "Welcome User : Admin !" << endl;
         cout << "***************************************" << endl;
         return true;
@@ -13,11 +13,12 @@ bool Proxy::CheckAccess() const{
         cout << "Enter as a Customer !" << endl;
         cout << "---------------------------------------" << endl;
     }
+    return true;
 }
 
 Proxy::Proxy(){
     if (nullptr == LRU) {
-        LRU = std::make_unique<LRUCache>(5);
+        LRU = std::make_unique<LRUCache>(10);
     }
     LRU->Set("Rat", 1469);
     LRU->Set("Ox", 2057);
@@ -26,20 +27,22 @@ Proxy::Proxy(){
     LRU->Set("Pig", 1469);
 }
 
-int Proxy::Proxy_Generate(std::string animal){
+int Proxy::ProxyGenerate(std::string animal){
     if (nullptr == luckynumber){
         luckynumber = std::make_unique<LuckyNumber>();
     }
     if (CheckAccess()){
-        if (!LRU->Get(animal)){
-            int temp = luckynumber->generate(animal);
-            LRU->Set(animal, temp);
+        int TempLRU = LRU->Get(animal);
+        if (TempLRU == -1){
+            int TempLuck = luckynumber->generate(animal);
+            LRU->Set(animal, TempLuck);
+            cout << "Find it on the LuckyNumber !" << endl;
             cout<<"Get the Number :     ";
-            return temp;
+            return TempLuck;
         }else{
-            std::cout << "Find it on the Cache !" << std::endl;
+            cout << "Find it on the Cache !" << endl;
             cout << "Get the Number :     ";
-            return LRU->Get(animal);
+            return TempLRU;
         }
     }
 }

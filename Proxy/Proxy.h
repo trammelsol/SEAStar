@@ -14,5 +14,5 @@ private:
 public:
 	Proxy();
 	bool CheckAccess() const;
-	int Proxy_Generate(std::string animal);
+	int ProxyGenerate(std::string animal);
 };
