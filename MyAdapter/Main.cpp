@@ -3,35 +3,36 @@
 using std::cout;
 using std::endl;
 
-void UseUSAPlug(US_Socket* ussocket){
-	cout<< ussocket->US_Input()<<endl;
-}
-
-void UseCNPlug(CN_Socket* cnsocket){
-	cout<< cnsocket->CN_Input()<<endl;
-}
-
-void UseUSA220V(US_Socket* usasocket){
-	cout << usasocket->US_220V()<<endl;
-}
-
-void UseCN110V(CN_Socket* cnsocket){
-	cout << cnsocket->CN_110V()<<endl;
-}
-
 int main() {
-	std::unique_ptr<US_Socket> usa(new US_Socket());
-	cout << usa->US_Input() << endl;
-	std::shared_ptr <Adapter> adapter(new Adapter(usa.get()));
-	UseCNPlug(adapter.get());
-	UseCN110V(adapter.get());
-	cout << "-------------------------------------" <<endl;
-	std::unique_ptr <CN_Socket> cn (new CN_Socket());
-	cout << cn->CN_Input() << endl;
-	std::unique_ptr <Adapter>adapter2(new Adapter(cn.get()));
-	UseUSAPlug(adapter2.get());
-	UseUSA220V(adapter2.get());
-	cout << "-------------------------------------" << endl;
+	while (true) {
+		string US_CN;
+		cout << "Choose Which Socket You Have : US or CN ? " << endl;
+		cout << "OR Press Q to EXIT" << endl;
+		cin>>US_CN;
+		if (US_CN == "US") {
+			std::unique_ptr<US_Socket> usa(new US_Socket());
+			cout << usa->Input() << endl;
+			cout << usa->Vol() << endl;
+			cout << "--------------------------------------" << endl;
+			std::shared_ptr <Adapter> adapter(new Adapter(usa.get()));
+			cout << "Choose Which Plug You Want to Poll : US or CN ?" << endl;
+			cin >> US_CN;
+			adapter->Socket_Plug(US_CN);
+		}
+		else if (US_CN == "CN") {
+			std::unique_ptr<CN_Socket> cn(new CN_Socket());
+			cout << cn->Input() << endl;
+			cout << cn->Vol() << endl;
+			cout << "--------------------------------------" << endl;
+			std::shared_ptr <Adapter> adapter(new Adapter(cn.get()));
+			cout << "Choose Which Plug You Want to Poll : US or CN ?" << endl;
+			cin >> US_CN;
+			adapter->Socket_Plug(US_CN);
+		}
+		else {
+			cout << "Input Finish System Quit !" << endl;
+			break;
+		}
+	}
 	return 0;
-
 }

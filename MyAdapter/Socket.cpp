@@ -1,17 +1,17 @@
 #include"Socket.h"
 
-std::string US_Socket::US_Input() const{
+std::string US_Socket::Input() const{
 	return "Input USA Standard Socket.";
 }
 
-std::string CN_Socket::CN_Input() const{
+std::string US_Socket::Vol()const {
+	return "Voltage : 110V";
+}
+
+std::string CN_Socket::Input() const{
 	return "Input CN Standard Socket.";
 }
 
-std::string CN_Socket::CN_110V() const{
-	return "Voltage to 110V";
-}
-
-std::string US_Socket::US_220V()const{
-	return "Voltage to 220V";
+std::string CN_Socket::Vol() const{
+	return "Voltage : 220V";
 }
