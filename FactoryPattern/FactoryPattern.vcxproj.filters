@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ClassDecaler_Furniture.h">
+    <ClInclude Include="ClassDecaler_Delievry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ClassDecaler_Delievry.h">
+    <ClInclude Include="ClassDecaler_Furniture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Compose.h">
@@ -26,16 +26,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="Compose.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Compose.cpp">
+    <ClCompile Include="Delievery.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Furniture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Delievery.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
