@@ -78,6 +78,7 @@ void CapeMario::GotMushroom(Mario* mario) {
 
 void CapeMario::GotFireFlower(Mario* mario) {
     mario->SetCoin(100);
+    mario->SetState(&FireMario::GetInstance());
 }
 
 void CapeMario::GotFeather(Mario* mario) {
