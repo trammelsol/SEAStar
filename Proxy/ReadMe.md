@@ -180,12 +180,12 @@ void LRUCache::Set(std::string key, int value){
 //获取缓存里的数据
 int LRUCache::Get(std::string key){
 	unordered_map<std::string , ListNode*>::iterator it = mp.find(key);
-	if (it != mp.end()){//缓存中没有该数据，去LuckyNumber中找并存入缓存链表头
+	if (it != mp.end()){//缓存中有该数据，将该数据放到链表头部
 		ListNode* Node = it->second;
 		Remove(Node);
 		SetHead(Node);
 		return Node->value;
-	}else{
+	}else{//缓存中没有该数据
 		return -1;
 	}
 }
