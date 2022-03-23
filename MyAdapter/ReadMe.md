@@ -7,7 +7,7 @@ Adapter适配器模式
 系统的数据和行为都正确，但接口不符时，我们应该考虑使用适配器，目的是使控制范围之外的一个原有对象与某个接口匹配。适配器模式主要应用于希望复用一些现存的类，但是接口又与复用环境要求不一致的情况。  
 想使用一个已经存在的类，但如果它的接口，也就是它的方法和你的要求不相同时，就应该考虑用适配器模式。  
 比如购买的第三方开发组件，该组件接口与我们自己系统的接口不相同，或者由于某种原因无法直接调用该组件，可以考虑适配器。  
-![alt Observer](https://gitee.com/trammelsol/seastar/raw/master/MyAdapter/Adapter.png "Class SketchMap")  
+![alt Observer](https://github.com/trammelsol/SEAStar/blob/master/MyAdapter/Adapter.png "Class SketchMap")  
 
 ###advantage:  
 . 单一职责原则  
