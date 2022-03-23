@@ -8,7 +8,7 @@
 #2.虚拟代理，是根据需要创建开销很大的对象。通过他来存放实例化需要很长时间的真实对象。  
 #3.安全代理，用来控制真实对象访问时的权限。  
 #4.智能指引，是指当调用真实的对象时，代理处理另外一些事。  
-![alt Proxy](https://gitee.com/trammelsol/seastar/raw/master/Proxy/Proxy.png "Class SketchMap")  
+![alt Proxy](https://github.com/trammelsol/SEAStar/blob/master/Proxy/Proxy.png "Class SketchMap")  
 
 ###advantage:    
 . 代理模式在客户端与目标对象之间起到一个中介作用和保护目标对象的作用  
